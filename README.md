@@ -2,44 +2,96 @@
 
 [![MCHP](images/microchip.png)](https://www.microchip.com)
 
-# Update the title for pic18f16q41-analog-demo-mplab-mcc here
+# Signal Scaling with the OPAMP on the PIC18-Q41 Family of MCUs
 
-<!-- This is where the introduction to the example goes, including mentioning the peripherals used -->
+This demo application shows how to use one of the Operational Amplifiers (OPAMP) in the PIC18-Q41 family of MCUs to create a Programmable Gain Amplifier for the on-board Analog-to-Digital Converter with Computation (ADCC). The ADCC is triggered automatically by Timer 0 (TMR0) while in sleep to reduce power consumption and improve measurement results. Pushbutton debouncing is performed by the Configurable Logic Cells (CLCs) and Timer 2 (TMR2).
 
 ## Related Documentation
 
-<!-- Any information about an application note or tech brief can be linked here. Use unbreakable links!
-     In addition a link to the device family landing page and relevant peripheral pages as well:
-     - [AN3381 - Brushless DC Fan Speed Control Using Temperature Input and Tachometer Feedback](https://microchip.com/00003381/)
-     - [PIC18F-Q10 Family Product Page](https://www.microchip.com/design-centers/8-bit/pic-mcus/device-selection/pic18f-q10-product-family) -->
+- [PIC18F16Q41 Documentation](#)
 
 ## Software Used
 
-<!-- All software used in this example must be listed here. Use unbreakable links!
-     - MPLABÂ® X IDE 5.30 or newer [(microchip.com/mplab/mplab-x-ide)](http://www.microchip.com/mplab/mplab-x-ide)
-     - MPLABÂ® XC8 2.10 or a newer compiler [(microchip.com/mplab/compilers)](http://www.microchip.com/mplab/compilers)
-     - MPLABÂ® Code Configurator (MCC) 3.95.0 or newer [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
-     - MPLABÂ® Code Configurator (MCC) Device Libraries PIC10 / PIC12 / PIC16 / PIC18 MCUs [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
-     - Microchip PIC18F-Q Series Device Support (1.4.109) or newer [(packs.download.microchip.com/)](https://packs.download.microchip.com/) -->
-
-- MPLAB® X IDE 5.50.0 or newer [(MPLAB® X IDE 5.50)](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_MPAE_Examples&utm_content=pic18f16q41-analog-demo-mplab-mcc-github)
-- MPLAB® XC8 2.31.0 or newer compiler [(MPLAB® XC8 2.31)](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_MPAE_Examples&utm_content=pic18f16q41-analog-demo-mplab-mcc-github)
+- [MPLABÂ® X IDE v5.50 or newer](#)
+- [MPLAB XC8 v2.32 or newer](#)
+- [MPLAB Code Configurator (MCC) v4.2.3](#)
+  - [Melody Library v1.84.5](#)
+- [PIC18F-Q_DFP v1.12.193 or newer](https://packs.download.microchip.com/)
+- [MPLAB Data Visualizer Plugin](#) or serial terminal
 
 ## Hardware Used
 
-<!-- All hardware used in this example must be listed here. Use unbreakable links!
-     - PIC18F47Q10 Curiosity Nano [(DM182029)](https://www.microchip.com/Developmenttools/ProductDetails/DM182029)
-     - Curiosity Nano Base for Click boardsâ„¢ [(AC164162)](https://www.microchip.com/Developmenttools/ProductDetails/AC164162)
-     - POT Click boardâ„¢ [(MIKROE-3402)](https://www.mikroe.com/pot-click) -->
+- [PIC18F16Q41 Curiosity Nano Evaluation Kit (???)](#)
+- Variable Power Supply or Other Signal Source
+- Breadboard and Wire (for connecting)
 
-## Setup
+## I/O Setup
 
-<!-- Explain how to connect hardware and set up software. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
+| I/O Pin | Name
+| ------  | ----
+| RA2 | OPAMP Input (+)
+| RB5 | UART RX (unused)
+| RB7 | UART TX
+| RC0 | Switch 0 (SW0)
+| RC1 | LED0
+| RC2 | OPAMP Output
+
+## Peripheral Configuration
+
+**UART** - 9600 Baud, 8-bits, No Parity, 1 Stop Bit  
+**ADCC** - Single Sample, Clock source is ADCRC, Auto-Conversion Trigger TMR0, Interrupt on Sample  
+**TMR0** - Runs from LFINTOSC at a period of 1s  
+**TMR2** - Start on Rising Edge, Start/Trigger from CLC2_OUT, Period is 8.25ms     
+**CLC1** - D-Input Flip-Flop, Clocked by LFINTOSC, Latched Value = SW0   
+**CLC2** - D-Input Flip-Flop, Clocked by LFINTOSC, Latched Value = (CLC1_OUT & SW0)  
+
+### CLC1 Diagram
+
+![CLC1 Configuration](./images/clc1.png)
+
+### CLC2 Diagram
+
+![CLC2 Configuration](./images/clc2.png)
+
+## Setting MPLAB Data Visualizer
+
+First, open Data Visualizer by pressing the "DV" icon in the toolbar.
+
+*If this icon is not shown, please install MPLAB Data Visualizer in the Tools &rarr; Plugins window before continuing.*
+
+![Data Visualizer Icon](./images/DVsetup1.PNG)
+
+Then select the COM port associated with the Curiosity Nano (ATtiny1627 shown here) by clicking on COM port entry. Set any settings required in the box below (defaults are OK for this example).
+
+![Select the COM Port](./images/DVsetup2.PNG)
+
+Press the play button to open the COM port.
+
+![Connect to the device](./images/DVsetup3.PNG)
+
+Finally, set the terminal window to use the COM port as a data source.
+
+![Configure the Terminal](./images/DVsetup4.PNG)
 
 ## Operation
 
-<!-- Explain how to operate the example. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
+This demo implements an analog signal chain with the OPAMP acting as a Programmable Gain Amplifier (PGA) for the ADC. The PGA can switch gains without using external components due to the internal resistor ladder on the device. There are 8 steps on the ladder plus a unity gain mode for a total of 9 possible gains (1x, 1.07x, 1.14x, 1.33x, 2x, 2.67x, 4x, 8x, 16x) with a single OPAMP.
+
+The output signal from the OPAMP is measured by the ADCC about once per second. The ADCC is triggered to start a measurement from Timer 2. When the measurement is complete, an interrupt is triggered by the ADC to wake the MCU from sleep.
+
+LED0 on the Curiosity Nano toggles when the MCU is ready to print a result. The current gain of the OPAMP and the measurement are printed to the UART terminal at 9600 baud (see example image below). Once the UART is idle, then the microcontroller enters sleep to save power.
+
+![Sample Output](./images/sampleOutput.PNG)
+
+To switch the OPAMP gain, press button SW0 on the Curiosity Nano. The output signal from SW0 is debounced by 2 CLCs. The rising edge of the CLCs output triggers TMR2. When Timer 2 rolls over, an interrupt occurs, the MCU performs the following steps:
+
+- Stop TMR0
+- Modify the gain (and configuration) of the OPAMP
+- Print the new OPAMP gain to the terminal
+- Clear and Restart TMR0
+- Return to Sleep
+
+Each time the button is pressed, the gain is increased by one step. If the gain is at max, then the gain is switched to 1x and the pattern repeats.
 
 ## Summary
-
-<!-- Summarize what the example has shown -->
+This demo has shown how to use the OPAMP and ADCC on the PIC18-Q41 family of MCUs to implement a PGA for signal measurements.
