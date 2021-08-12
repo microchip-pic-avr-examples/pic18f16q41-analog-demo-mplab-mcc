@@ -94,4 +94,4 @@ To switch the OPAMP gain, press button SW0 on the Curiosity Nano. The output sig
 Each time the button is pressed, the gain is increased by one step. If the gain is at max, then the gain is switched to 1x and the pattern repeats.
 
 ## Summary
-This demo has shown how to implement the OPAMP to function asa PGA for the ADCC for signal measurements.
+This demo has shown how to implement the OPAMP to function as a PGA for the ADCC for signal measurements.
