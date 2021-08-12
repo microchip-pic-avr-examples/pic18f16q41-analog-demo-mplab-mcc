@@ -165,6 +165,10 @@ int main(void)
         //Finish Sending Data
         while (!UART1_IsTxDone());
         
+        //If the gain was changed while printing, rerun the loop
+        if (gainChanged)
+            continue;
+        
         //Sleep while idle
         Sleep();
         NOP();
