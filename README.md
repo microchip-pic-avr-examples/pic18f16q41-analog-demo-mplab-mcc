@@ -8,20 +8,20 @@ This demo application shows how to use one of the Operational Amplifiers (OPAMP)
 
 ## Related Documentation
 
-- [PIC18F16Q41 Documentation](#)
+- [PIC18F16Q41 Documentation](https://www.microchip.com/en-us/product/PIC18F16Q41?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q41&utm_content=pic18f1q41-analog-demo-mplab-mcc-github)
 
 ## Software Used
 
-- [MPLAB® X IDE v5.50 or newer](#)
-- [MPLAB XC8 v2.32 or newer](#)
-- [MPLAB Code Configurator (MCC) v4.2.3](#)
-  - [Melody Library v1.84.5](#)
+- [MPLAB® X IDE v5.50 or newer](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q41&utm_content=pic18f1q41-analog-demo-mplab-mcc-github)
+- [MPLAB XC8 v2.32 or newer](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q41&utm_content=pic18f1q41-analog-demo-mplab-mcc-github)
+- [MPLAB Code Configurator (MCC) v4.2.3](https://www.microchip.com/en-us/development-tools-tools-and-software/embedded-software-center/mplab-code-configurator?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q41&utm_content=pic18f1q41-analog-demo-mplab-mcc-github)
+  - [Melody Library v1.84.5](https://www.microchip.com/en-us/development-tools-tools-and-software/embedded-software-center/mplab-code-configurator?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q41&utm_content=pic18f1q41-analog-demo-mplab-mcc-github)
 - [PIC18F-Q_DFP v1.12.193 or newer](https://packs.download.microchip.com/)
-- [MPLAB Data Visualizer Plugin](#) or serial terminal
+- [MPLAB Data Visualizer Plugin](https://www.microchip.com/en-us/development-tools-tools-and-software/embedded-software-center/mplab-data-visualizer?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q41&utm_content=pic18f1q41-analog-demo-mplab-mcc-github) or serial terminal
 
 ## Hardware Used
 
-- [PIC18F16Q41 Curiosity Nano Evaluation Kit (???)](#)
+- [PIC18F16Q41 Curiosity Nano Evaluation Kit (EV26Q64A)](https://www.microchip.com/en-us/development-tool/EV26Q64A?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q41&utm_content=pic18f1q41-analog-demo-mplab-mcc-github)
 - Variable Power Supply or Other Signal Source
 - Breadboard and Wire (for connecting)
 
@@ -94,4 +94,4 @@ To switch the OPAMP gain, press button SW0 on the Curiosity Nano. The output sig
 Each time the button is pressed, the gain is increased by one step. If the gain is at max, then the gain is switched to 1x and the pattern repeats.
 
 ## Summary
-This demo has shown how to use the OPAMP and ADCC on the PIC18-Q41 family of MCUs to implement a PGA for signal measurements.
+This demo has shown how to implement the OPAMP to function asa PGA for the ADCC for signal measurements.
