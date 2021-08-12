@@ -4,10 +4,10 @@
     "content": {
         "metaDataVersion": "1.1.0",
         "name": "com.microchip.mcu8.mplabx.project.pic18f16q41-analog-demo-mplab-mcc",
-        "version": " ",
-        "displayName": "",
+        "version": "1.0.0",
+        "displayName": "Signal Scaling with the OPAMP on the PIC18-Q41 Family of MCUs",
         "projectName": "pic18f16q41-analog-demo-mplab-mcc",
-        "shortDescription": "This application demos the OPAMP as a Programmable Gain Amplifier PGA for the ADC",
+        "shortDescription": "This application demos the OPAMP as a Programmable Gain Amplifier (PGA) for the ADCC.",
         "ide": {
             "name": "MPLAB X",
             "semverRange": ">=5.50.0"
@@ -19,12 +19,12 @@
             }
         ],
         "dfp": {
-            "name": "",
-            "semverRange": ""
+            "name": "PIC18F-Q_DFP",
+            "semverRange": "^1.12.193"
         },
         "configurator": {
-            "name": "",
-            "semverRange": ""
+            "name": "MCC",
+            "semverRange": "4.2.3"
         },
         "device": {
             "metaDataVersion": "1.0.0",
@@ -36,10 +36,33 @@
                 "versionRange": "*"
             }
         },
-        "author": "Robert Perkel",
-        "subcategories": [],
-        "peripherals": [],
-        "keywords": [],
+        "author": "Microchip",
+        "subcategories": [
+          [
+             "Peripherals", "TMR0"
+          ],
+          [
+             "Peripherals", "ADCC"
+          ],
+          [
+             "Peripherals", "OPA"
+          ],
+          [
+             "Peripherals", "CLC"
+          ],
+          [
+             "Peripherals", "UART"
+          ],
+          [
+             "Peripherals", "TMR2"
+          ]
+        ],
+        "peripherals": [
+          "TMR0", "ADCC", "OPA", "CLC", "UART", "TMR2"
+        ],
+        "keywords": [
+          "12-bit ADC", "ADCC", "PGA", "Analog", "OPAMP", "CCL", "Sleep"
+        ],
         "additionalData": {
             "longDescription": {
                 "metaDataVersion": "1.0.0",
