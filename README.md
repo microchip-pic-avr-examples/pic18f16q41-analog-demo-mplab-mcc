@@ -88,7 +88,7 @@ The first step is to open the MPLAB Data Visualizer tool by pressing the "DV" ic
 
 ![Data Visualizer Icon](./images/DVsetup1.PNG)
 
-Then select the COM port associated with the Curiosity Nano (ATtiny1627 shown here) by clicking on COM port entry. Set any settings required in the box below (defaults are OK for this example).
+Then select the COM port associated with the Curiosity Nano by clicking on COM port entry. Set any settings required in the box below (defaults are OK for this example).
 
 ![Select the COM Port](./images/DVsetup2.PNG)
 
