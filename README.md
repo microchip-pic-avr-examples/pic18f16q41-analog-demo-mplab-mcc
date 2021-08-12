@@ -4,7 +4,7 @@
 
 # Signal Scaling with the OPAMP on the PIC18-Q41 Family of MCUs
 
-This demo application shows how to use one of the Operational Amplifiers (OPAMP) in the PIC18-Q41 family of MCUs to create a Programmable Gain Amplifier for the on-board Analog-to-Digital Converter with Computation (ADCC). The ADCC is triggered automatically by Timer 0 (TMR0) while in sleep to reduce power consumption and improve measurement results. Pushbutton debouncing is performed by the Configurable Logic Cells (CLCs) and Timer 2 (TMR2).
+This demo application shows how to use the Operational Amplifier (OPAMP) in the PIC18-Q41 family of MCUs to create a Programmable Gain Amplifier to be used with the on-board Analog-to-Digital Converter with Computation (ADCC). The ADCC is triggered automatically by Timer 0 (TMR0) while the device is in sleep mode to reduce power consumption and to improve ADC measurement of high-Z or small signals. Pushbutton debouncing is performed by using the Configurable Logic Cells (CLCs) and Timer 2 (TMR2).
 
 ## Related Documentation
 
@@ -38,12 +38,38 @@ This demo application shows how to use one of the Operational Amplifiers (OPAMP)
 
 ## Peripheral Configuration
 
-**UART** - 9600 Baud, 8-bits, No Parity, 1 Stop Bit  
-**ADCC** - Single Sample, Clock source is ADCRC, Auto-Conversion Trigger TMR0, Interrupt on Sample  
+The settings below are the key settings used to implement the functionality in this example.
+
+**System Clock** - 4 MHz HFINTOSC, 4x Clock Divider  
+**UART** - 9600 Baud (High Speed Baud Rate Generator ON), 8-bits, No Parity, 1 Stop Bit, Redirect STDIO to UART  
+**ADCC** - Single Sample, Clock source is ADCRC, Auto-Conversion Trigger TMR0, AQ time of 6 cycles, Interrupt on Sample  
+**OPA1** (OPAMP) - Charge Pump On, Unity Gain Buffer, Positive Channel OPA1IN+, Positive Source Selection OPA1IN2+  
 **TMR0** - Runs from LFINTOSC at a period of 1s  
-**TMR2** - Start on Rising Edge, Start/Trigger from CLC2_OUT, Period is 8.25ms     
+**TMR2** -  Start on Rising Edge of CLC2_OUT, Period is 8.25ms, Interrupt Enabled     
 **CLC1** - D-Input Flip-Flop, Clocked by LFINTOSC, Latched Value = SW0   
 **CLC2** - D-Input Flip-Flop, Clocked by LFINTOSC, Latched Value = (CLC1_OUT & SW0)  
+
+### UART1 Settings
+
+![UART1 Configuration](./images/UART1.PNG)
+
+### ADCC Settings
+
+![ADCC Configuration](./images/ADCC.PNG)  
+
+(Not shown - interrupt enabled.)
+
+### OPAMP Settings
+
+![OPAMP Configuration](./images/OPAMP.PNG)
+
+### TMR0 Diagram
+
+![TMR0 Configuration](./images/Timer0.PNG)
+
+### TMR2 Diagram
+
+![TMR2 Configuration](./images/Timer2.PNG)
 
 ### CLC1 Diagram
 
@@ -83,15 +109,15 @@ LED0 on the Curiosity Nano toggles when the MCU is ready to print a result. The 
 
 ![Sample Output](./images/sampleOutput.PNG)
 
-To switch the OPAMP gain, press button SW0 on the Curiosity Nano. The output signal from SW0 is debounced by 2 CLCs. The rising edge of the CLCs output triggers TMR2. When Timer 2 rolls over, an interrupt occurs, the MCU performs the following steps:
+To switch the OPAMP gain configuration, press button SW0 on the Curiosity Nano. The output signal from SW0 is debounced using 2 CLCs and TMR2. The rising edge of the CLCs output triggers TMR2. When Timer 2 rolls over, an interrupt occurs, which wakes the MCU to perform the following steps:
 
-- Stop TMR0
-- Modify the gain (and configuration) of the OPAMP
-- Print the new OPAMP gain to the terminal
-- Clear and Restart TMR0
-- Return to Sleep
+1. Stop TMR0
+2. Modify the gain (and configuration) of the OPAMP
+3. Print the new OPAMP gain to the terminal
+4. Clear and Restart TMR0
+5. Return to Sleep
 
-Each time the button is pressed, the gain is increased by one step. If the gain is at max, then the gain is switched to 1x and the pattern repeats.
+Each time the button is pressed, the gain is increased by one step. If the gain is at the maximum value, then the gain is switched to 1x and the pattern repeats.
 
 ## Summary
 This demo has shown how to implement the OPAMP to function as a PGA for the ADCC for signal measurements.

@@ -88,7 +88,7 @@
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
-      <itemPath>SPI_ADC_Q41.mc3</itemPath>
+      <itemPath>config.mc3</itemPath>
     </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>

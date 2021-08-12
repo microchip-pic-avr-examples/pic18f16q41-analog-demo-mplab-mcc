@@ -125,21 +125,11 @@ int main(void)
     //Enable Interrupts
     INTERRUPT_GlobalInterruptEnable();
     
+    float result = 0.0;
+    
     while(1)
     {
-        if (resultsReady)
-        {
-            //Clear the print flag
-            resultsReady = false;
-            
-            //Toggle the LED Indicator
-            LED0_Toggle();
-            
-            //Print Results
-            printf("Current Gain: %s\n\r", getCurrentGain());
-            printf("Measurement: 0x%X\n\r\n\r", ADCC_GetConversionResult());
-        }
-        else if (gainChanged)
+        if (gainChanged)
         {
             //Clear the print flag
             gainChanged = false;
@@ -152,6 +142,21 @@ int main(void)
             
             //Restart Timer 0
             Timer0_Start();
+        }
+        else if (resultsReady)
+        {
+            //Clear the print flag
+            resultsReady = false;
+            
+            //Convert to a floating point
+            result = (ADCC_GetConversionResult() * 3.3) / 4096;
+            
+            //Toggle the LED Indicator
+            LED0_Toggle();
+            
+            //Print Results
+            printf("Current Gain: %s\n\r", getCurrentGain());
+            printf("Measured: %1.3fV\n\r\n\r", result);
         }
         
         //Finish Sending Data
