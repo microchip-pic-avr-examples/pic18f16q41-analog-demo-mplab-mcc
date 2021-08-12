@@ -82,7 +82,7 @@ The settings below are the key settings used to implement the functionality in t
 
 ## Setting MPLAB Data Visualizer
 
-First, open Data Visualizer by pressing the "DV" icon in the toolbar.
+The first step is to open the MPLAB Data Visualizer tool by pressing the "DV" icon in the toolbar as shown below.
 
 *If this icon is not shown, please install MPLAB Data Visualizer in the Tools &rarr; Plugins window before continuing.*
 
@@ -92,11 +92,11 @@ Then select the COM port associated with the Curiosity Nano (ATtiny1627 shown he
 
 ![Select the COM Port](./images/DVsetup2.PNG)
 
-Press the play button to open the COM port.
+When the correct COM port has been selected and the Data Visualizer settings are set, press the play button to open the COM port.
 
 ![Connect to the device](./images/DVsetup3.PNG)
 
-Finally, set the terminal window to use the COM port as a data source.
+Once the COM port has been opened, the last step is to set the terminal window to use the COM port as a data source.
 
 ![Configure the Terminal](./images/DVsetup4.PNG)
 
@@ -104,9 +104,9 @@ Finally, set the terminal window to use the COM port as a data source.
 
 This demo implements an analog signal chain with the OPAMP acting as a Programmable Gain Amplifier (PGA) for the ADC. The PGA can switch gains without using external components due to the internal resistor ladder on the device. There are 8 steps on the ladder plus a unity gain mode for a total of 9 possible gains (1x, 1.07x, 1.14x, 1.33x, 2x, 2.67x, 4x, 8x, 16x) with a single OPAMP.
 
-The output signal from the OPAMP is measured by the ADCC about once per second. The ADCC is triggered to start a measurement from Timer 2. When the measurement is complete, an interrupt is triggered by the ADC to wake the MCU from sleep.
+The output signal from the OPAMP is measured by the ADCC about once per second. The ADCC is triggered to start a measurement using Timer 0. When the measurement is complete, an interrupt is triggered by the ADC to wake the MCU from Sleep.
 
-LED0 on the Curiosity Nano toggles when the MCU is ready to print a result. The current gain of the OPAMP and the measurement are printed to the UART terminal at 9600 baud (see example image below). Once the UART is idle, then the microcontroller enters sleep to save power.
+LED0 on the Curiosity Nano toggles when the MCU is ready to print a result. The current configured gain of the OPAMP and the actual ADCC measured values are printed to the UART terminal at 9600 baud (see example image below). Once the UART is idle (and a gain switch is not pending), then the microcontroller enters Sleep to save power.
 
 ![Sample Output](./images/sampleOutput.PNG)
 
