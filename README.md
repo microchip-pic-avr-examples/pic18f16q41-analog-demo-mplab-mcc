@@ -22,6 +22,7 @@ This demo application shows how to use the Operational Amplifier (OPAMP) in the 
 ## Hardware Used
 
 - [PIC18F16Q41 Curiosity Nano Evaluation Kit (EV26Q64A)](https://www.microchip.com/en-us/development-tool/EV26Q64A?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_pic18q41&utm_content=pic18f1q41-analog-demo-mplab-mcc-github)
+  - Running at 3.3V (default)
 - Variable Power Supply or Other Signal Source
 - Breadboard and Wire (for connecting)
 

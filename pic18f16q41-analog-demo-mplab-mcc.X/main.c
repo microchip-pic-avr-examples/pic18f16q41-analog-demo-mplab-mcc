@@ -125,6 +125,9 @@ int main(void)
     //Enable Interrupts
     INTERRUPT_GlobalInterruptEnable();
     
+    //Assumes 3.3V operation
+    const float bitsPerVolt = 3.3 / 4096;
+    
     float result = 0.0;
     
     while(1)
@@ -149,7 +152,7 @@ int main(void)
             resultsReady = false;
             
             //Convert to a floating point
-            result = (ADCC_GetConversionResult() * 3.3) / 4096;
+            result = ADCC_GetConversionResult() * bitsPerVolt;
             
             //Toggle the LED Indicator
             LED0_Toggle();
