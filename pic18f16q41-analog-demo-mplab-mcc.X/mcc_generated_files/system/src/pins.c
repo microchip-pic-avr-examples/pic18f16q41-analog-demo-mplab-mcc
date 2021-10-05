@@ -75,6 +75,12 @@ void PIN_MANAGER_Initialize(void)
     WPUC = 0x1;
 
     /**
+    RxyI2C registers
+    */
+    RB4I2C = 0x0;
+    RB6I2C = 0x0;
+
+    /**
     ODx registers
     */
     ODCONA = 0x0;
