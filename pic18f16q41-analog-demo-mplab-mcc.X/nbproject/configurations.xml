@@ -31,7 +31,8 @@
         </logicalFolder>
         <logicalFolder name="uart" displayName="uart" projectFiles="true">
           <itemPath>mcc_generated_files/uart/uart1.h</itemPath>
-          <itemPath>mcc_generated_files/uart/uart_interface.h</itemPath>
+          <itemPath>mcc_generated_files/uart/uart_types.h</itemPath>
+          <itemPath>mcc_generated_files/uart/uart_drv_interface.h</itemPath>
         </logicalFolder>
       </logicalFolder>
     </logicalFolder>

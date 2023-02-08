@@ -1,26 +1,16 @@
 /**
-  TMR0 Generated Driver File
- 
-  @Company
-    Microchip Technology Inc.
- 
-  @File Name
-    tmr0.c
- 
-  @Summary
-    This is the generated driver implementation file for the TMR0 driver
- 
-  @Description
-    This source file provides APIs for driver for TMR0.
-    Generation Information :
-        Driver Version    :  2.01
-    The generated drivers are tested against the following:
-        Compiler          :  XC8 v2.31
-        MPLAB             :  MPLAB X v5.45
+ * TMR0 Generated Driver File
+ * 
+ * @file tmr0.c
+ * 
+ * @ingroup tmr0
+ * 
+ * @brief  Driver implementation for the TMR0 driver
+ *
+ * @version TMR0 Driver Version 2.1.0
 */
-
 /*
-© [2021] Microchip Technology Inc. and its subsidiaries.
+© [2023] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -48,7 +38,7 @@ const struct TMR_INTERFACE Timer0 = {
     .Initialize = Timer0_Initialize,
     .Start = Timer0_Start,
     .Stop = Timer0_Stop,
-    .PeriodCountSet = Timer0_Write,
+    .PeriodCountSet = Timer0_Reload,
     .TimeoutCallbackRegister = Timer0_OverflowCallbackRegister,
     .Tasks = Timer0_Tasks
 };
@@ -98,16 +88,16 @@ uint8_t Timer0_Read(void)
     return readVal;
 }
 
-void Timer0_Write(size_t timerVal)
+void Timer0_Write(uint8_t timerVal)
 {
     //Write to TMR0 register, low byte only
-    TMR0L = (uint8_t)timerVal;
+    TMR0L = timerVal;
  }
 
-void Timer0_Reload(uint8_t periodVal)
+void Timer0_Reload(size_t periodVal)
 {
    //Write to TMR0 register, high byte only
-   TMR0H = periodVal;
+   TMR0H = (uint8_t)periodVal;
 }
 
 

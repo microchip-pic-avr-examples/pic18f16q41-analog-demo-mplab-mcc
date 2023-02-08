@@ -1,26 +1,17 @@
 /**
-  TMR2 Generated Driver File
-
-  @Company
-    Microchip Technology Inc.
-
-  @File Name
-    tmr2.c
- 
-  @Summary
-    This is the generated driver implementation file for the TMR2 driver
- 
-  @Description
-    This source file provides APIs for driver for TMR2.
-    Generation Information :
-        Driver Version    :  3.0.0
-    The generated drivers are tested against the following:
-        Compiler          :  XC8 v2.31
-        MPLAB             :  MPLAB X v5.45
-*/
+ * TMR2 Generated Driver File
+ *
+ * @file tmr2.c
+ * 
+ * @ingroup  tmr2
+ * 
+ * @brief API implementations for the TMR2 module.
+ *
+ * @version TMR2 Driver Version 3.0.1
+ */
 
 /*
-© [2021] Microchip Technology Inc. and its subsidiaries.
+© [2023] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -77,7 +68,7 @@ void Timer2_Initialize(void){
     // TMR 0x0; 
     T2TMR = 0x0;
 
-    // Set Default Interrupt Handler
+    // Set default overflow callback
     Timer2_OverflowCallbackRegister(Timer2_DefaultOverflowCallback);
 
     // Clearing IF flag before enabling the interrupt.
@@ -150,6 +141,3 @@ static void Timer2_DefaultOverflowCallback(void){
     // or set custom function using Timer2_OverflowCallbackRegister()
 }
 
-/**
-  End of File
-*/

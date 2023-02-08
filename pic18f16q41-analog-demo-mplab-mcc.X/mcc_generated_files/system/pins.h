@@ -8,11 +8,11 @@
  * @brief This is generated driver header for pins. 
  *        This header file provides APIs for all pins selected in the GUI.
  *
- * @version Driver Version  3.0.0
+ * @version Driver Version  3.1.0
 */
 
 /*
-© [2021] Microchip Technology Inc. and its subsidiaries.
+© [2023] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -49,6 +49,26 @@
 #define PULL_UP_ENABLED      1
 #define PULL_UP_DISABLED     0
 
+// get/set RA0 aliases
+#define IO_RA0_TRIS                 TRISAbits.TRISA0
+#define IO_RA0_LAT                  LATAbits.LATA0
+#define IO_RA0_PORT                 PORTAbits.RA0
+#define IO_RA0_WPU                  WPUAbits.WPUA0
+#define IO_RA0_OD                   ODCONAbits.ODCA0
+#define IO_RA0_ANS                  ANSELAbits.ANSELA0
+#define IO_RA0_SetHigh()            do { LATAbits.LATA0 = 1; } while(0)
+#define IO_RA0_SetLow()             do { LATAbits.LATA0 = 0; } while(0)
+#define IO_RA0_Toggle()             do { LATAbits.LATA0 = ~LATAbits.LATA0; } while(0)
+#define IO_RA0_GetValue()           PORTAbits.RA0
+#define IO_RA0_SetDigitalInput()    do { TRISAbits.TRISA0 = 1; } while(0)
+#define IO_RA0_SetDigitalOutput()   do { TRISAbits.TRISA0 = 0; } while(0)
+#define IO_RA0_SetPullup()          do { WPUAbits.WPUA0 = 1; } while(0)
+#define IO_RA0_ResetPullup()        do { WPUAbits.WPUA0 = 0; } while(0)
+#define IO_RA0_SetPushPull()        do { ODCONAbits.ODCA0 = 0; } while(0)
+#define IO_RA0_SetOpenDrain()       do { ODCONAbits.ODCA0 = 1; } while(0)
+#define IO_RA0_SetAnalogMode()      do { ANSELAbits.ANSELA0 = 1; } while(0)
+#define IO_RA0_SetDigitalMode()     do { ANSELAbits.ANSELA0 = 0; } while(0)
+   
 // get/set RA2 aliases
 #define RA2_IN2_TRIS                 TRISAbits.TRISA2
 #define RA2_IN2_LAT                  LATAbits.LATA2
@@ -68,7 +88,7 @@
 #define RA2_IN2_SetOpenDrain()       do { ODCONAbits.ODCA2 = 1; } while(0)
 #define RA2_IN2_SetAnalogMode()      do { ANSELAbits.ANSELA2 = 1; } while(0)
 #define RA2_IN2_SetDigitalMode()     do { ANSELAbits.ANSELA2 = 0; } while(0)
-
+   
 // get/set RB5 aliases
 #define IO_RB5_TRIS                 TRISBbits.TRISB5
 #define IO_RB5_LAT                  LATBbits.LATB5
@@ -88,7 +108,7 @@
 #define IO_RB5_SetOpenDrain()       do { ODCONBbits.ODCB5 = 1; } while(0)
 #define IO_RB5_SetAnalogMode()      do { ANSELBbits.ANSELB5 = 1; } while(0)
 #define IO_RB5_SetDigitalMode()     do { ANSELBbits.ANSELB5 = 0; } while(0)
-
+   
 // get/set RB7 aliases
 #define IO_RB7_TRIS                 TRISBbits.TRISB7
 #define IO_RB7_LAT                  LATBbits.LATB7
@@ -108,7 +128,7 @@
 #define IO_RB7_SetOpenDrain()       do { ODCONBbits.ODCB7 = 1; } while(0)
 #define IO_RB7_SetAnalogMode()      do { ANSELBbits.ANSELB7 = 1; } while(0)
 #define IO_RB7_SetDigitalMode()     do { ANSELBbits.ANSELB7 = 0; } while(0)
-
+   
 // get/set RC0 aliases
 #define SW0_TRIS                 TRISCbits.TRISC0
 #define SW0_LAT                  LATCbits.LATC0
@@ -128,7 +148,7 @@
 #define SW0_SetOpenDrain()       do { ODCONCbits.ODCC0 = 1; } while(0)
 #define SW0_SetAnalogMode()      do { ANSELCbits.ANSELC0 = 1; } while(0)
 #define SW0_SetDigitalMode()     do { ANSELCbits.ANSELC0 = 0; } while(0)
-
+   
 // get/set RC1 aliases
 #define LED0_TRIS                 TRISCbits.TRISC1
 #define LED0_LAT                  LATCbits.LATC1
@@ -148,7 +168,7 @@
 #define LED0_SetOpenDrain()       do { ODCONCbits.ODCC1 = 1; } while(0)
 #define LED0_SetAnalogMode()      do { ANSELCbits.ANSELC1 = 1; } while(0)
 #define LED0_SetDigitalMode()     do { ANSELCbits.ANSELC1 = 0; } while(0)
-
+   
 // get/set RC2 aliases
 #define IO_RC2_TRIS                 TRISCbits.TRISC2
 #define IO_RC2_LAT                  LATCbits.LATC2
@@ -168,7 +188,7 @@
 #define IO_RC2_SetOpenDrain()       do { ODCONCbits.ODCC2 = 1; } while(0)
 #define IO_RC2_SetAnalogMode()      do { ANSELCbits.ANSELC2 = 1; } while(0)
 #define IO_RC2_SetDigitalMode()     do { ANSELCbits.ANSELC2 = 0; } while(0)
-
+   
 /**
  * @ingroup  pinsdriver
  * @brief GPIO and peripheral I/O initialization

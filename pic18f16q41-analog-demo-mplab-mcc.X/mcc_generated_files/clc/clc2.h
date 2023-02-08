@@ -1,26 +1,16 @@
- /**
-   CLC2 Generated Driver API Header File
- 
-   @Company
-     Microchip Technology Inc. 
-
-   @File Name
-    clc2.h
-
-   @Summary
-     This is the generated header file for the CLC2 driver.
- 
-   @Description
-     This header file provides APIs for driver for CLC2 driver.
-     Generation Information :
-         Driver Version    :  1.0.0
-     The generated drivers are tested against the following:
-         Compiler          :  XC8 v2.20
-         MPLAB             :  MPLABX v5.40
- */
-
+/**
+ * CLC2 Generated Driver API Header File.
+ * 
+ * @file clc2.h
+ * 
+ * @defgroup  clc2 CLC2
+ * 
+ * @brief This file contains the API prototypes for the CLC2 driver.
+ *
+ * @version CLC2 Driver Version 1.0.1
+*/
 /*
-© [2021] Microchip Technology Inc. and its subsidiaries.
+© [2023] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -42,64 +32,28 @@
 
 #ifndef CLC2_H
  #define CLC2_H
- 
- /**
-   Section: Included Files
- */
 
 #include <xc.h>
 #include <stdint.h>
 #include <stdbool.h>
 
 /**
-  Section: CLC2 APIs
-*/
-
-/**
-  @Summary
-    Initializes the CLC2
-
-  @Description
-    This routine configures the CLC2 specific control registers
-
-  @Preconditions
-    None
-
-  @Returns
-    None
-
-  @Param
-    None
-
-  @Comment
-
-  @Example
-    <code>
-    CLC2_Initialize();
-    </code>
-*/
+ * @ingroup clc2
+ * @brief  Initializes the CLC2. This routine configures the CLC2 specific control registers.
+ * @param None.
+ * @return None.
+ * 
+ */
 void CLC2_Initialize(void);
 
+
 /**
-  @Summary
-    Returns output pin status of the CLC module.
-
-  @Description
-    This routine returns output pin status of the CLC module.
-
-  @Param
-    None.
-
-  @Returns
-    Output pin status
- 
-  @Example 
-    <code>
-    bool outputStatus;
-    outputStatus = CLC2_OutputStatusGet();
-    </code>
-*/
-
+ * @ingroup clc2
+ * @brief Returns the output pin status of the CLC module.
+ * @param  None.
+ * @retval True - Output is 1.
+ * @retval False - Output is 0.
+ */
 bool CLC2_OutputStatusGet(void);
 
 #endif  // CLC2_H

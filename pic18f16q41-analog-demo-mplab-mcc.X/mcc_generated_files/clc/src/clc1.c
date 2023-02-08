@@ -1,26 +1,16 @@
- /**
-   CLC1 Generated Driver File
- 
-   @Company
-     Microchip Technology Inc.
- 
-   @File Name
-     clc1.c
- 
-   @Summary
-     This is the generated driver implementation file for the CLC1 driver.
- 
-   @Description
-     This source file provides implementations for driver APIs for CLC1.
-     Generation Information :
-         Driver Version    :  1.0.0
-     The generated drivers are tested against the following:
-         Compiler          :  XC8 v2.20
-         MPLAB             :  MPLABX v5.40
- */ 
-
- /*
-© [2021] Microchip Technology Inc. and its subsidiaries.
+/**
+ * CLC1 Generated Driver File.
+ * 
+ * @file clc1.c
+ * 
+ * @ingroup  clc1
+ * 
+ * @brief This file contains the API implementations for the CLC1 driver.
+ *
+ * @version CLC1 Driver Version 1.0.1
+*/
+/*
+© [2023] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -39,21 +29,14 @@
     EXCEED AMOUNT OF FEES, IF ANY, YOU PAID DIRECTLY TO MICROCHIP FOR 
     THIS SOFTWARE.
 */
- 
- /**
-   Section: Included Files
- */
+
 
 #include <xc.h>
 #include "../clc1.h"
 
-/**
-  Section: CLC1 APIs
-*/
 
 void CLC1_Initialize(void)
 {
-    // Set the CLC1 to the options selected in the User Interface
     
     // SLCT 0x0; 
     CLCSELECT = 0x0;
